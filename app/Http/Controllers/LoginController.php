@@ -25,13 +25,30 @@ class LoginController extends Controller
         $pass = Validator::make($request->only("password"),[
             "password" => ["required"]
         ]);
+        $login["password"] = md5($login["password"]);
         if (Auth::attempt($login)) {
             // Authentication passed...
-            return redirect(route("admin.index"));
+            return redirect(route("home"));
         }else{
             return $pass->after(function ($pass){
                 $pass->errors()->add("password","Incorrect Password!");
             })->validate();
         }
     }
+
+    public function reset(){
+        return view("password/reset/index");
+    }
+    public function request(){
+        return redirect(route("password.confirm"));
+    }
+
+    public function confirm(){
+        return view("password/reset/confirm");
+    }
+
+    public function save(){
+        return redirect(route("login"));
+    }
+
 }

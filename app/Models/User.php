@@ -28,6 +28,8 @@ class User extends Authenticatable
         'code',
         'profile',
         'is_reset',
+        'status',
+        'type',
     ];
 
     /**

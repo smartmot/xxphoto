@@ -19,10 +19,12 @@ return new class extends Migration
             $table->enum('gender', ["male", "female"]);
             $table->date('birthdate');
             $table->string('password');
-            $table->string('token');
-            $table->string('code');
+            $table->enum('type',["user", "admin"]);
+            $table->enum('status', ["active", "block", "ban"])->default("active");
+            $table->string('token', 500);
+            $table->string('code')->nullable();
             $table->enum('is_reset',["no","yes"]);
-            $table->string('profile');
+            $table->string('profile')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
