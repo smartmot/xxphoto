@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config("app.name") }}</title>
     <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/cropper.css") }}">
+    <script src="{{ asset("js/cropper.js") }}" type="text/javascript"></script>
 </head>
 <body>
 <div class="wp-100 h-50 bc-dred p-r">
@@ -23,6 +25,15 @@
 
 ?>
 
+<div class="w-320">
+    <img class="wp-100" id="image" src="{{ asset("image/001.jpg") }}" alt="">
+</div>
+
+<script type="text/javascript">
+    let cropper = new Cropper("image",{
+
+    })
+</script>
 
 </body>
 </html>
